@@ -129,19 +129,19 @@ sudo su -
 - Create your user:
 
 ```bash
-useradd myuser
+useradd admin
 ```
 
 - Set your password:
 
 ```bash
-passwd myuser
+passwd admin
 ```
 
 - Give your user admin rights
 
 ```bash
-usermod -a -G wheel myuser
+usermod -a -G wheel admin
 ```
 
 - update the system:
@@ -153,7 +153,7 @@ yum update -y
 Allow your user to access the shared folder:
 
 ```bash
-usermod -a -G vboxsf myuser
+usermod -a -G vboxsf admin
 ```
 
 Allow your user to use sudo without a password by adding this line to the sudoers file:
@@ -169,7 +169,7 @@ scroll to the very end and click the i button.
 and add this line at the very end:
 
 ```
-myuser ALL=(ALL) NOPASSWD: ALL
+admin ALL=(ALL) NOPASSWD: ALL
 ```
 
 save the file by hitting the escape button, then hitting the colon button then hit the x button, finally hit enter.
@@ -192,12 +192,7 @@ sudo userdel -r centos
 
 - A popup window will appear, click on run, you will be prompted to enter your user password.
 
-- Wait untill you are asked to hit enter to close the window, then reboot.
-
-- 
-
-
-
+- Wait until you are asked to hit enter to close the window, then reboot.
 
 <!-- ========================================================== -->
 > #### **_Option 2 - Start from scratch_**
@@ -209,6 +204,140 @@ sudo userdel -r centos
 
  - 
 
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+> ## **_ Install important dev apps _** 
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+
+- Libraries needed during compilation to enable all features of Python:
+
+```bash
+yum install -y epel-release zlib-devel bzip2-devel openssl openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel expat-devel libffi-dev gcc gcc-c++ zlib libffi-devel
+```
+
+- Reboot.
+
+- Make sure the developmet tools are installed:
+
+```bash
+sudo yum groupinstall -y "Development Tools"
+```
+
+- Make sure all these packages are installed:
+
+```bash
+sudo yum install -y wget jq zlib-devel bzip2-devel openssl openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel expat-devel libffi-dev gcc gcc-c++ zlib libffi-devel
+```
+
+- Python2.7 will be preinstalled, you might need to install pip:
+
+```bash
+sudo su -
+wget https://bootstrap.pypa.io/get-pip.py
+```
+
+then run:
+
+```bash
+python2.7 get-pip.py
+```
+
+To upgrade pip:
+
+```bash
+sudo su -
+python2.7 -m pip install --upgrade pip
+```
+
+- Install python 3.7
+
+```bash
+sudo su -
+cd /root
+wget http://python.org/ftp/python/3.7.5/Python-3.7.5.tar.xz
+tar xf Python-3.7.5.tar.xz
+cd Python-3.7.5
+./configure --prefix=/usr/local --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib"
+make && make altinstall
+
+
+```
+
+- Then upgrade pip3.7
+
+```bash
+sudo su -
+python3.7 -m pip install --upgrade pip
+```
+
+- Install pipenv on the user level (not globally):
+
+```bash
+pip3.7 install --user pipenv
+```
+
+Make sure the path: $HOME/.local/bin is added to your ~/.bashrc file.
+
+- Install aws cli:
+
+```bash
+pip3.7 install --user awscli
+```
+
+- Install git 2:
+
+```bash
+sudo yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
+sudo yum install git
+
+
+```
+
+- Install VSCode:
+
+```bash
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+sudo yum install code -y
+
+
+```
+
+
+
+
+
+
+Then:
+
+nodejs
+
+docker
+
+ansible
+
+terraform
+
+tfenv
+
+linuxbrew
+
+Git
+
+jq
+
+vscode
+
+sublime text
+
+Chrome
 
 
 
@@ -348,49 +477,6 @@ git config --global user.email user@email.com
 echo "welcome $USER to your interactive non login shell .bashrc"
 ```
 
-<!-- 
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
- -->
-> ## **_ Install important dev apps _** 
-<!-- 
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
- -->
-
-python3.7
-
-python3.8
-
-pipenv
-
-aws cli
-
-nodejs
-
-docker
-
-ansible
-
-terraform
-
-tfenv
-
-linuxbrew
-
-pipenv
-
-Git
-
-jq
-
-vscode
-
-sublime text
-
-Chrome
 
 <!-- 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
