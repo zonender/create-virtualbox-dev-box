@@ -33,7 +33,7 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 > #### **_Option 1 - Download a pre-installed VirtualBox (VB) image (ova file)_**
 <!-- ========================================================== -->
 
-- Install the latest VirtualBox version from: https://www.virtualbox.org/ 
+- Install the latest VB version from: https://www.virtualbox.org/ 
 
 - Go to: https://www.linuxvmimages.com/
 
@@ -46,9 +46,7 @@ password: centos
 
 - Scroll down to the Graphical Desktop Installation, or download it from [here.](https://sourceforge.net/projects/linuxvmimages/files/VirtualBox/C/7/CentOS_7.7.1908_VBG.zip/download)
 
-- Unzip the ova image file.
-
-- On the host desktop create a folder called "sharedwithvb", for example, this folder will be shared between the VM and the host.
+- Unzip the ova image file and place it on the desktop
 
 - open VB.
 
@@ -66,7 +64,120 @@ password: centos
 
 - Click on Agree.
 
-- After the import completes, select the VM you just imported to highlight it.
+- Proceed to the VM Settings section to set the rest of the setting, before launching. 
+
+
+
+<!-- ========================================================== -->
+> #### **_Option 2 - Start from scratch_**
+<!-- ========================================================== -->
+
+ - Go to https://wiki.centos.org/Download
+
+ - Under CentOS Linux Version 7 Minor Release 8 (2003) click on RPMs, or click [here](http://isoredirect.centos.org/centos/7/isos/x86_64/) then click on one of the images in the list, place the iso file: CentOS-7-x86_64-DVD-2003.iso on your desktop.
+
+ - Open VB.
+
+ - On the menu bar go to Machines - New
+
+ - Under name call it devbox or any name you choose.
+
+ - Leave the machine folder at the default value: C:\Users\username\VirtualBox VMs
+
+ - Under Type select Linux.
+
+ - Under version select Redhat 64-bit then click next.
+
+ NOTE: If you do not see any 64-Bit versions and only 32-Bit versions, go [here](http://www.fixedbyvonnie.com/2014/11/virtualbox-showing-32-bit-guest-versions-64-bit-host-os/#.XtHduzpKhHY) to fix the issue.
+
+ - Set RAM preferably 4096 MB, but 2048 MB should work fine, then click next.
+
+ - Under hard disk select create a virtual hard disk now, then click next.
+
+ - Under hard disk file type select VHD then click next.
+
+ - Under storage on physical hard disk select dynamic allocation, then click next.
+
+ - Under file location and size, leave the default location: C:\Users\username\VirtualBox VMs\devbox\devbox.vhd and set the size to 30 GB then click create.
+
+- select the VM you just created devbox to highlight it.
+
+- Click on settings.
+
+- On the left panel click on storage.
+
+- Under Controller: IDE click on the optical disk icon that says Empty.
+
+- on the right where it says optical drive, click on the optical disk icon, then click on Choose a disk file, then browse to the location of the iso file we downloaded earlier named: CentOS-7-x86_64-DVD-2003.iso on your desktop.
+
+- Click ok, this will boot the VM from optical disk
+
+- Proceed to the VM Settings section to set the rest of the setting, before launching.
+
+- After completing the VM setting section, the VM will launch.
+
+- If you are prompted to select an optical disk, click cancel.
+
+- The first screen is the Centos 7 welcome screen, select English and click continue.
+
+- Wait for the second screen "INSTALLATION SUMMARY" to load then click on "SOFTWARE SELECTION".
+
+- Click on Server with GUI, then on the right side select the following:
+
+  - Compatibility Libraries
+  - Development Tools
+  - System Administration Tools.
+
+  Then click on Done.
+
+- Wait for the "INSTALLATION SUMMARY" to load all sections.
+
+- Click on INSTALLATION DESTINATION.
+
+- Click on Automatically Configure partitioning, then click on Done.
+
+- Wait for the "INSTALLATION SUMMARY" to load all sections.
+
+- Click on NETWORK & HOSTNAME
+
+- Click on both adapters and click on the On Button to connect, then underhost name type devbox then click on apply, finally click on Done.
+
+- Wait for the "INSTALLATION SUMMARY" to load all sections.
+
+- Click on begin installation.
+
+- While the installation is running, click on user creation.
+
+- Under Full name type: Dev Admin or your desired name.
+
+- Under username type: admin or the desired username
+
+- Click on both: Make this user an admin and click on Require a password to use this account.
+
+- Under password type: admin or the desired password
+
+- Click Done.
+
+- Click on root password.
+
+- Type the password: admin or any desired password.
+
+- If the password is too short you will get a warning, just click on Done again.
+
+- Wait for the installation to finish.
+
+
+
+
+
+
+<!-- ========================================================== -->
+> #### **_VM Settings_**
+<!-- ========================================================== -->
+
+- On the host desktop create a folder called "sharedwithvb", for example, this folder will be shared between the VM and the host.
+
+- select the VM you just imported to highlight it.
 
 - Click on settings.
 
@@ -82,9 +193,17 @@ password: centos
 
 - Click on the Motherboard tab.
 
-- Under base memory type 2048 MB (preferably 4096 MB)
+- Under base memory, type 2048 MB (preferably 4096 MB)
+
+- Under boot order, uncheck floppy disk and network.
+
+- Make sure the optical drive is on top of the hard disk.
 
 - Under pointing device select USB Tablet.
+
+- click on display on the left panel.
+
+- Set the video memory to the max: 128 MB
 
 - Click on processor on the left panel
 
@@ -115,6 +234,30 @@ password: centos
 - Click OK.
 
 - Right click on the VM, then, under start select detachable start.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - Once the VM starts, To Adjust the screen size and on the menu bar go to View then go to Virtual Screen 1, then select auto scaled output or the desired percentage.
 
@@ -188,15 +331,7 @@ sudo userdel -r centos
 
 - Wait until you are asked to hit enter to close the window, then reboot.
 
-<!-- ========================================================== -->
-> #### **_Option 2 - Start from scratch_**
-<!-- ========================================================== -->
 
-
-
- - Go to https://wiki.centos.org/Download
-
- - 
 
 <!-- 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
