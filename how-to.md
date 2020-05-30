@@ -218,7 +218,9 @@ sudo yum update -y
 sudo reboot now
 ```
 
-- Go to the section: [SETUP GUEST ADDITIONS AND SHARED HOST FOLDER](#setup-guest-additions-and-shared-host-folder)
+- Then proceed to the section: [SETUP GUEST ADDITIONS AND SHARED HOST FOLDER](#setup-guest-additions-and-shared-host-folder)
+
+- Then proceed to the section: [SYSTEM CONFIGURATION](#system-configuration)
 
 - Done.
 
@@ -526,35 +528,6 @@ sudo reboot now
 - Make sure your vm runs normally by making sure the resolution is correct and that it scales as required by restoring the vm window and then maximizing it, also test the bidirectional clipboard, and make sure you can access (read and write) the shared folder.
 
 - DONE!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- 
@@ -875,7 +848,7 @@ echo "welcome $USER to your interactive non login shell .bashrc"
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
  -->
 
-- Backup monthly.
+- Backup monthly, see this section: [BACKING UP THE VM USING VB OVA FILES](#backing-up-the-vm-using-vb-ova-files)
 
 - Always keep two previous images.
 
