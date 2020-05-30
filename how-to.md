@@ -17,6 +17,7 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 #######################################################################################################################################
  -->
 
+
 <!-- 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -64,7 +65,51 @@ password: centos
 
 - Click on Agree.
 
-- Proceed to the "VB VM SETTINGS" section to set the rest of the setting, before launching. 
+- Proceed to the section: [VB VM SETTINGS](#vb-vm-settings) to set the rest of the setting, before launching.
+
+- Launch the vm.
+
+- Then proceed to the section: [SETUP GUEST ADDITIONS AND SHARED HOST FOLDER](#setup-guest-additions-and-shared-host-folder)
+
+- switch to root user:
+
+```bash
+sudo su -
+```
+
+- Create your user:
+
+```bash
+useradd admin
+```
+
+- Set your password:
+
+```bash
+passwd admin
+```
+
+- Give your user admin rights
+
+```bash
+usermod -a -G wheel admin
+```
+
+
+- login using your user:
+
+- delete the old user:
+
+```bash
+sudo userdel -r centos
+```
+
+- Update guest additions, by clicking on the Devices menu on the menu bar of the VM window, then click on Insert Guest Additions CD.
+
+- A popup window will appear, click on run, you will be prompted to enter your user password.
+
+- Wait until you are asked to hit enter to close the window, then reboot.
+
 
 
 
@@ -181,7 +226,7 @@ sudo yum update -y
 sudo reboot now
 ```
 
-- Go to the section: "SETUP GUEST ADDITIONS AND SHARED HOST FOLDER"
+- Go to the section: [SETUP GUEST ADDITIONS AND SHARED HOST FOLDER](#setup-guest-additions-and-shared-host-folder)
 
 - Done.
 
@@ -194,7 +239,7 @@ DATE - LINUX DISTRO - KERNEL VERSION - VIRTUALBOX VERSION - GUEST ADDITIONS VERS
 
 You can maintain it periodically by downloading the ova file launching the VM tunning a system update then create an ova file out of it and uploading it.
 
-- Go to the section: "BACKING UP THE VM USING VB OVA FILES"
+- Go to the section: [BACKING UP THE VM USING VB OVA FILES](#backing-up-the-vm-using-vb-ova-files)
 
 
 <!-- 
@@ -284,7 +329,7 @@ You can maintain it periodically by downloading the ova file launching the VM tu
 
 Guest additions allow for fullscreen improved resolution and bidirectional clipboard.
 
-- Make sure you covered the "VB VM SETTINGS" section first
+- Make sure you covered the [VB VM SETTINGS](#vb-vm-settings) section first.
 
 - Start the VM.
 
@@ -331,24 +376,42 @@ NOTE: This might take a while
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
  -->
 
+<!-- ========================================================== -->
+> #### **_Adding the user to the sudoers file_**
+<!-- ========================================================== -->
 
 - Allow your user to use sudo without a password by adding this line to the sudoers file:
 
 Open the sudoers file by running:
 
 ```bash
-visudo
+sudo visudo
 ```
 
-- scroll to the very end and click the i button.
+- scroll to the very end and hit "i".
 
 and add this line at the very end:
 
-```
+```ini
 admin ALL=(ALL) NOPASSWD: ALL
 ```
 
-save the file by hitting the escape button, then hitting the colon button then hit the x button, finally hit enter.
+save the file by hitting the escape button, then hitting the colon button then hit the "x", finally hit enter.
+
+<!-- ========================================================== -->
+> #### **_.bashrc_**
+<!-- ========================================================== -->
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -499,81 +562,6 @@ sudo reboot now
 
 
 
-
-
-
-
-- Once the VM starts, To Adjust the screen size and on the menu bar go to View then go to Virtual Screen 1, then select auto scaled output or the desired percentage.
-
-NOTE: after every screen scale change restore the VM window then maximize it.
-
-- switch to root user:
-
-```bash
-sudo su -
-```
-
-- Create your user:
-
-```bash
-useradd admin
-```
-
-- Set your password:
-
-```bash
-passwd admin
-```
-
-- Give your user admin rights
-
-```bash
-usermod -a -G wheel admin
-```
-
-Allow your user to access the shared folder:
-
-```bash
-usermod -a -G vboxsf admin
-```
-
-Allow your user to use sudo without a password by adding this line to the sudoers file:
-
-Open the sudoers file by running:
-
-```bash
-visudo
-```
-
-scroll to the very end and click the i button.
-
-and add this line at the very end:
-
-```
-admin ALL=(ALL) NOPASSWD: ALL
-```
-
-save the file by hitting the escape button, then hitting the colon button then hit the x button, finally hit enter.
-
-Then Reboot:
-
-```bash
-reboot now
-```
-
-- login using your user:
-
-- delete the old user:
-
-```bash
-sudo userdel -r centos
-```
-
-- Update guest additions, by clicking on the Devices menu on the menu bar of the VM window, then click on Insert Guest Additions CD.
-
-- A popup window will appear, click on run, you will be prompted to enter your user password.
-
-- Wait until you are asked to hit enter to close the window, then reboot.
 
 
 
