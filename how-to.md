@@ -71,6 +71,8 @@ password: centos
 
 - Then proceed to the section: [SETUP GUEST ADDITIONS AND SHARED HOST FOLDER](#setup-guest-additions-and-shared-host-folder)
 
+- Then proceed to the section: [SYSTEM CONFIGURATION](#system-configuration)
+
 - switch to root user:
 
 ```bash
@@ -95,7 +97,6 @@ passwd admin
 usermod -a -G wheel admin
 ```
 
-
 - login using your user:
 
 - delete the old user:
@@ -103,15 +104,6 @@ usermod -a -G wheel admin
 ```bash
 sudo userdel -r centos
 ```
-
-- Update guest additions, by clicking on the Devices menu on the menu bar of the VM window, then click on Insert Guest Additions CD.
-
-- A popup window will appear, click on run, you will be prompted to enter your user password.
-
-- Wait until you are asked to hit enter to close the window, then reboot.
-
-
-
 
 <!-- ========================================================== -->
 > #### **_Option 2 - Start from scratch_**
