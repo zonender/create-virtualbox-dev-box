@@ -30,7 +30,7 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
  -->
 
 <!-- ========================================================== -->
-> #### **_Option 1 - Download a pre-configured VirtualBox (VB) image (ova file)_**
+> #### **_Option 1 - Download a pre-installed VirtualBox (VB) image (ova file)_**
 <!-- ========================================================== -->
 
 - Install the latest VirtualBox version from: https://www.virtualbox.org/ 
@@ -144,12 +144,6 @@ passwd admin
 usermod -a -G wheel admin
 ```
 
-- update the system:
-
-```bash
-yum update -y
-```
-
 Allow your user to access the shared folder:
 
 ```bash
@@ -209,20 +203,24 @@ sudo userdel -r centos
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
  -->
-> ## **_ Install python and other system packages _** 
+> ## **_ Install important system packages _** 
 <!-- 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
  -->
 
+- update the system:
+
+```bash
+yum update -y
+```
+
 - Libraries needed during compilation to enable all features of Python:
 
 ```bash
-yum install -y epel-release zlib-devel bzip2-devel openssl openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel expat-devel libffi-dev gcc gcc-c++ zlib libffi-devel
+yum install -y wget epel-release zlib-devel bzip2-devel openssl openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel expat-devel libffi-dev gcc gcc-c++ zlib libffi-devel
 ```
-
-- Reboot.
 
 - Make sure the developmet tools are installed:
 
@@ -230,11 +228,21 @@ yum install -y epel-release zlib-devel bzip2-devel openssl openssl-devel ncurses
 sudo yum groupinstall -y "Development Tools"
 ```
 
-- Make sure all these packages are installed:
+- Reboot.
 
-```bash
-sudo yum install -y wget jq zlib-devel bzip2-devel openssl openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel expat-devel libffi-dev gcc gcc-c++ zlib libffi-devel
-```
+
+
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+> ## **_ Install python (2.7 - 3.7 - 3.8), pip and pipenv _** 
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
 
 - Python2.7 will be preinstalled, you might need to install pip:
 
