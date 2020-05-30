@@ -64,7 +64,7 @@ password: centos
 
 - Click on Agree.
 
-- Proceed to the VM Settings section to set the rest of the setting, before launching. 
+- Proceed to the "VB VM SETTINGS" section to set the rest of the setting, before launching. 
 
 
 
@@ -112,7 +112,7 @@ password: centos
 
 - Click ok, this will boot the VM from optical disk
 
-- Proceed to the VM Settings section to set the rest of the setting, before launching.
+- Proceed to the "VB VM SETTINGS" section to set the rest of the setting, before launching.
 
 - After completing the VM setting section, the VM will launch.
 
@@ -166,14 +166,48 @@ password: centos
 
 - Wait for the installation to finish.
 
+- Click on the reebot when installation is done.
+
+- After rebboting, accept the license, then click on finish configuration.
+
+- login with user: admin and password: admin
+
+- open the terminal by going to application - system tools then click on terminal.
+
+- and run this command to update the system:
+
+```bash
+sudo yum update -y
+sudo reboot now
+```
+
+- Go to the section: "SETUP GUEST ADDITIONS AND SHARED HOST FOLDER"
+
+- Done.
+
+- At this point you might want to save this image as-is by creating an ova file, this machine state represent a contos 7 server with gui that has nothing installed on it and can be a good starting point for any further installation.
+
+Follow this naming convention to recognize the image:
+
+DATE - LINUX DISTRO - KERNEL VERSION - VIRTUALBOX VERSION - GUEST ADDITIONS VERSION
+30-MAY-2020 - CENTOS7 SERVER WITH GUI - 3.10.0-1127.8.2.el7.x86_64 - VB6.1.8 - GA6.1.8.ova
+
+You can maintain it periodically by downloading the ova file launching the VM tunning a system update then create an ova file out of it and uploading it.
+
+- Go to the section: "Backing up the VM using ova files"
 
 
-
-
-
-<!-- ========================================================== -->
-> #### **_VM Settings_**
-<!-- ========================================================== -->
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+> ## **_VB VM SETTINGS_** 
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
 
 - On the host desktop create a folder called "sharedwithvb", for example, this folder will be shared between the VM and the host.
 
@@ -234,6 +268,216 @@ password: centos
 - Click OK.
 
 - Right click on the VM, then, under start select detachable start.
+
+
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+> ## **_SETUP GUEST ADDITIONS AND SHARED HOST FOLDER_** 
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+
+Guest additions allow for fullscreen improved resolution and bidirectional clipboard.
+
+- Make sure you covered the "VB VM SETTINGS" section first
+
+- Start the VM.
+
+- Go to the menu bar of the VM and click on Devices then insert Guest Additions disk.
+
+- enter your user pass when prompted.
+
+- wait for the installation to complete then reboot.
+
+- Allow your user to access the shared folder:
+
+```bash
+usermod -a -G vboxsf admin
+```
+
+Then Reboot:
+
+```bash
+reboot now
+```
+
+NOTE: This might take a while
+
+- login using your user.
+
+- To check screen resolution go to the VM's menu bar and click on view - virtual screen 1 then select the desired scale, preferably 100%, to apply changes restore the vm window then maximize again, you should now see the desired resolution.
+
+- copy and paste text between the host and the vm to test the bidirectional clipboard.
+
+- Make sure you can access the shared folder and can read and write files.
+
+- DONE!
+
+
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+> ## **_SYSTEM CONFIGURATION_** 
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+
+
+- Allow your user to use sudo without a password by adding this line to the sudoers file:
+
+Open the sudoers file by running:
+
+```bash
+visudo
+```
+
+- scroll to the very end and click the i button.
+
+and add this line at the very end:
+
+```
+admin ALL=(ALL) NOPASSWD: ALL
+```
+
+save the file by hitting the escape button, then hitting the colon button then hit the x button, finally hit enter.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+> ## **_Backing up the VM using ova files_** 
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+
+- First launch the vm and update the system:
+
+```bash
+sudo yum update -y
+```
+
+- run this command to get the latest kernel version and take note of it:
+
+```bash
+uname -r
+```
+
+Example result: 3.10.0-1127.8.2.el7.x86_64
+
+- reboot the vm:
+
+```bash
+sudo reboot now
+```
+
+- Make sure the vm is running normally.
+
+- Shutdown the vm.
+
+- Create a backup ova file by first selecting and highlighting the vm, click on the vm name on the left panel.
+
+- get the VB version by going to the menu bar and clicking on help then about, take note of VB version.
+
+- On the menu bar go to file - export appliance.
+
+- under format select 2.0
+
+- under file browse to the desktop and name your ova file as follows:
+
+DATE - LINUX DISTRO - KERNEL VERSION - VIRTUALBOX VERSION - GUEST ADDITIONS VERSION
+
+Example:
+
+29-MAY-2020 - CENTOS7 - 3.10.0-1127.8.2.el7.x86_64 - VB6.1.8 - GA6.1.8.ova
+
+- Under MAC Address Policy select include all network adampter MAC Addresses
+
+- Check write manifest file (for error checking)
+
+- encheck include ISO
+
+- Click on export
+
+- DONE!
+
+- Now you can save this image on google drive or microsoft one drive for high avaialbility accessibility.
+
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+> ## **_Upgrading VB and Guest Additions_** 
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+
+
+- Make sure the vm is shutdown.
+
+- select the vm on the left panel.
+
+to upgrade virtualbox:
+
+- update the system first:
+
+```bash
+sudo yum update -y
+sudo shutdown now
+```
+
+- go to: https://www.virtualbox.org/wiki/Downloads to get the latest VB version and install it.
+
+- Launch the vm, then go to the vm menu bar and select "Devices: then "insert guest additions cd"
+
+- You will be prompted for your password.
+
+- Wait until you are promted to hit enter to close the terminal.
+
+- Reboot.
+
+```bash
+sudo reboot now
+```
+
+- Make sure your vm runs normally by making sure the resolution is correct and that it scales as required by restoring the vm window and then maximizing it, also test the bidirectional clipboard, and make sure you can access (read and write) the shared folder.
+
+- DONE!
+
+
+
+
+
+
+
 
 
 
@@ -344,6 +588,8 @@ sudo userdel -r centos
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
  -->
+
+This must come before installing any other software on the vm.
 
 - update the system:
 
