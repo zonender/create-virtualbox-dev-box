@@ -194,7 +194,7 @@ DATE - LINUX DISTRO - KERNEL VERSION - VIRTUALBOX VERSION - GUEST ADDITIONS VERS
 
 You can maintain it periodically by downloading the ova file launching the VM tunning a system update then create an ova file out of it and uploading it.
 
-- Go to the section: "Backing up the VM using ova files"
+- Go to the section: "BACKING UP THE VM USING VB OVA FILES"
 
 
 <!-- 
@@ -369,7 +369,7 @@ save the file by hitting the escape button, then hitting the colon button then h
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
  -->
-> ## **_Backing up the VM using ova files_** 
+> ## **_BACKING UP THE VM USING VB OVA FILES_** 
 <!-- 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -420,7 +420,7 @@ Example:
 
 - Check write manifest file (for error checking)
 
-- encheck include ISO
+- uncheck include ISO
 
 - Click on export
 
