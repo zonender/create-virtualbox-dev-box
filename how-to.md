@@ -23,6 +23,40 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
  -->
+> ## **_Index:_** 
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+
+- [Create the VM](#create-the-vm)
+
+  - [Option 1 - Download a pre-installed VirtualBox (VB) image (ova file)](#option-1---download-a-pre-installed-virtualbox-(vb)-image-(ova-file))
+  - [Option 2 - Start from scratch](#option-2---start-from-scratch)
+  
+- [VB VM SETTINGS](#vb-vm-settings)
+
+- [SETUP GUEST ADDITIONS AND SHARED HOST FOLDER](#setup-guest-additions-and-shared-host-folder)
+
+- [SYSTEM CONFIGURATION](#system-configuration)
+
+  - [Adding the user to the sudoers file](#adding-the-user-to-the-sudoers-file)
+
+  - [.bashrc](#.bashrc)
+
+- [Install important system packages](#Install-important-system-packages)
+
+- [Installing Python, Pip, Pipenv](#installing-python,-pip,-pipenv)
+
+- [Installing Development Tools](#installing-development-tools)
+
+
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
 > ## **_Create the VM_** 
 <!-- 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -104,6 +138,8 @@ usermod -a -G wheel admin
 ```bash
 sudo userdel -r centos
 ```
+
+[Back to top](#index)
 
 <!-- ========================================================== -->
 > #### **_Option 2 - Start from scratch_**
@@ -235,6 +271,7 @@ You can maintain it periodically by downloading the ova file launching the VM tu
 
 - Go to the section: [BACKING UP THE VM USING VB OVA FILES](#backing-up-the-vm-using-vb-ova-files)
 
+[Back to top](#index)
 
 <!-- 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -308,6 +345,7 @@ You can maintain it periodically by downloading the ova file launching the VM tu
 
 - Right click on the VM, then, under start select detachable start.
 
+[Back to top](#index)
 
 <!-- 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -357,6 +395,8 @@ NOTE: This might take a while
 
 - DONE!
 
+[Back to top](#index)
+
 
 <!-- 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -392,324 +432,11 @@ admin ALL=(ALL) NOPASSWD: ALL
 
 save the file by hitting the escape button, then hitting the colon button then hit the "x", finally hit enter.
 
+[Back to top](#index)
+
 <!-- ========================================================== -->
 > #### **_.bashrc_**
 <!-- ========================================================== -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
- -->
-> ## **_BACKING UP THE VM USING VB OVA FILES_** 
-<!-- 
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
- -->
-
-- First launch the vm and update the system:
-
-```bash
-sudo yum update -y
-```
-
-- run this command to get the latest kernel version and take note of it:
-
-```bash
-uname -r
-```
-
-Example result: 3.10.0-1127.8.2.el7.x86_64
-
-- reboot the vm:
-
-```bash
-sudo reboot now
-```
-
-- Make sure the vm is running normally.
-
-- Shutdown the vm.
-
-- Create a backup ova file by first selecting and highlighting the vm, click on the vm name on the left panel.
-
-- get the VB version by going to the menu bar and clicking on help then about, take note of VB version.
-
-- On the menu bar go to file - export appliance.
-
-- under format select 2.0
-
-- under file browse to the desktop and name your ova file as follows:
-
-DATE - LINUX DISTRO - KERNEL VERSION - VIRTUALBOX VERSION - GUEST ADDITIONS VERSION
-
-Example:
-
-29-MAY-2020 - CENTOS7 - 3.10.0-1127.8.2.el7.x86_64 - VB6.1.8 - GA6.1.8.ova
-
-- Under MAC Address Policy select include all network adampter MAC Addresses
-
-- Check write manifest file (for error checking)
-
-- uncheck include ISO
-
-- Click on export
-
-- DONE!
-
-- Now you can save this image on google drive or microsoft one drive for high avaialbility accessibility.
-
-<!-- 
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
- -->
-> ## **_Upgrading VB and Guest Additions_** 
-<!-- 
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
- -->
-
-
-- Make sure the vm is shutdown.
-
-- select the vm on the left panel.
-
-to upgrade virtualbox:
-
-- update the system first:
-
-```bash
-sudo yum update -y
-sudo shutdown now
-```
-
-- go to: https://www.virtualbox.org/wiki/Downloads to get the latest VB version and install it.
-
-- Launch the vm, then go to the vm menu bar and select "Devices: then "insert guest additions cd"
-
-- You will be prompted for your password.
-
-- Wait until you are promted to hit enter to close the terminal.
-
-- Reboot.
-
-```bash
-sudo reboot now
-```
-
-- Make sure your vm runs normally by making sure the resolution is correct and that it scales as required by restoring the vm window and then maximizing it, also test the bidirectional clipboard, and make sure you can access (read and write) the shared folder.
-
-- DONE!
-
-
-<!-- 
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
- -->
-> ## **_ Install important system packages _** 
-<!-- 
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
- -->
-
-This must come before installing any other software on the vm.
-
-- update the system:
-
-```bash
-yum update -y
-```
-
-- Libraries needed during compilation to enable all features of Python:
-
-```bash
-yum install -y wget epel-release zlib-devel bzip2-devel openssl openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel expat-devel libffi-dev gcc gcc-c++ zlib libffi-devel
-```
-
-- Make sure the developmet tools are installed:
-
-```bash
-sudo yum groupinstall -y "Development Tools"
-```
-
-- Reboot.
-
-
-
-<!-- 
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
- -->
-> ## **_ Install python (2.7 - 3.7 - 3.8), pip and pipenv _** 
-<!-- 
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
- -->
-
-- Python2.7 will be preinstalled, you might need to install pip:
-
-```bash
-sudo su -
-wget https://bootstrap.pypa.io/get-pip.py
-```
-
-then run:
-
-```bash
-python2.7 get-pip.py
-```
-
-To upgrade pip:
-
-```bash
-sudo su -
-python2.7 -m pip install --upgrade pip
-```
-
-- Install python 3.7
-
-```bash
-sudo su -
-cd /root
-wget http://python.org/ftp/python/3.7.5/Python-3.7.5.tar.xz
-tar xf Python-3.7.5.tar.xz
-cd Python-3.7.5
-./configure --prefix=/usr/local --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib"
-make && make altinstall
-
-
-```
-
-- Then upgrade pip3.7
-
-```bash
-sudo su -
-python3.7 -m pip install --upgrade pip
-```
-
-- Install pipenv on the user level (not globally):
-
-```bash
-pip3.7 install --user pipenv
-```
-
-Make sure the path: $HOME/.local/bin is added to your ~/.bashrc file, pipenv needs this.
-
-
-<!-- 
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
- -->
-> ## **_ Install development software _** 
-<!-- 
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
- -->
-
-
-- Install aws cli:
-
-```bash
-pip3.7 install --user awscli
-```
-
-- Install git 2:
-
-```bash
-sudo yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
-sudo yum install git
-
-
-```
-
-- Install VSCode:
-
-```bash
-sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-sudo yum install code -y
-
-
-```
-
-
-
-
-
-
-Then:
-
-linux brew
-
-nodejs
-
-docker
-
-ansible
-
-terraform
-
-tfenv
-
-linuxbrew
-
-Git
-
-jq
-
-vscode
-
-sublime text
-
-Chrome
-
-
-
-<!-- 
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
- -->
-> ## **_ Configure _** 
-<!-- 
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
- -->
 
 Open the file ~/.bashrc remove every thing and add the following:
 
@@ -741,9 +468,7 @@ export EDITOR="vim"
 # User specific environment and startup programs
 ########################################
 export PATH=$PATH:$HOME/scripts:$HOME/.local/bin:$HOME/bin:$HOME/terraform:/usr/local/bin:/usr/local/lib:/usr/bin:/bin
-export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin/:$PATH"
-export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+
 ########################################//
 
 ########################################
@@ -835,6 +560,268 @@ git config --global user.email user@email.com
 echo "welcome $USER to your interactive non login shell .bashrc"
 ```
 
+[Back to top](#index)
+
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+> ## **_BACKING UP THE VM USING VB OVA FILES_** 
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+
+- First launch the vm and update the system:
+
+```bash
+sudo yum update -y
+```
+
+- run this command to get the latest kernel version and take note of it:
+
+```bash
+uname -r
+```
+
+Example result: 3.10.0-1127.8.2.el7.x86_64
+
+- reboot the vm:
+
+```bash
+sudo reboot now
+```
+
+- Make sure the vm is running normally.
+
+- Shutdown the vm.
+
+- Create a backup ova file by first selecting and highlighting the vm, click on the vm name on the left panel.
+
+- get the VB version by going to the menu bar and clicking on help then about, take note of VB version.
+
+- On the menu bar go to file - export appliance.
+
+- under format select 2.0
+
+- under file browse to the desktop and name your ova file as follows:
+
+DATE - LINUX DISTRO - KERNEL VERSION - VIRTUALBOX VERSION - GUEST ADDITIONS VERSION
+
+Example:
+
+29-MAY-2020 - CENTOS7 - 3.10.0-1127.8.2.el7.x86_64 - VB6.1.8 - GA6.1.8.ova
+
+- Under MAC Address Policy select include all network adampter MAC Addresses
+
+- Check write manifest file (for error checking)
+
+- uncheck include ISO
+
+- Click on export
+
+- DONE!
+
+- Now you can save this image on google drive or microsoft one drive for high avaialbility accessibility.
+
+[Back to top](#index)
+
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+> ## **_Upgrading VB and Guest Additions_** 
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+
+
+- Make sure the vm is shutdown.
+
+- select the vm on the left panel.
+
+to upgrade virtualbox:
+
+- update the system first:
+
+```bash
+sudo yum update -y
+sudo shutdown now
+```
+
+- go to: https://www.virtualbox.org/wiki/Downloads to get the latest VB version and install it.
+
+- Launch the vm, then go to the vm menu bar and select "Devices: then "insert guest additions cd"
+
+- You will be prompted for your password.
+
+- Wait until you are promted to hit enter to close the terminal.
+
+- Reboot.
+
+```bash
+sudo reboot now
+```
+
+- Make sure your vm runs normally by making sure the resolution is correct and that it scales as required by restoring the vm window and then maximizing it, also test the bidirectional clipboard, and make sure you can access (read and write) the shared folder.
+
+- DONE!
+
+[Back to top](#index)
+
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+> ## **_Install important system packages_** 
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+
+This must come before installing any other software on the vm.
+
+- update the system:
+
+```bash
+yum update -y
+```
+
+- Libraries needed during compilation to enable all features of Python:
+
+```bash
+yum install -y wget jq epel-release zlib-devel bzip2-devel openssl openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel expat-devel libffi-dev gcc gcc-c++ zlib libffi-devel
+```
+
+- Make sure the developmet tools are installed:
+
+```bash
+sudo yum groupinstall -y "Development Tools"
+```
+
+- Reboot.
+
+[Back to top](#index)
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+> ## **_Installing Python, Pip, Pipenv_** 
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+
+- Python2.7 will be preinstalled, you might need to install pip:
+
+```bash
+sudo su -
+wget https://bootstrap.pypa.io/get-pip.py
+```
+
+then run:
+
+```bash
+python2.7 get-pip.py
+```
+
+To upgrade pip:
+
+```bash
+sudo su -
+python2.7 -m pip install --upgrade pip
+```
+
+- Install python 3.7
+
+```bash
+sudo su -
+cd /root
+wget http://python.org/ftp/python/3.7.7/Python-3.7.7.tar.xz
+tar xf Python-3.7.7.tar.xz
+cd Python-3.7.7
+./configure --prefix=/usr/local --enable-optimizations --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib"
+make
+make altinstall
+
+
+```
+
+- Then upgrade pip3.7
+
+```bash
+sudo su -
+python3.7 -m pip install --upgrade pip
+```
+
+- Install pipenv on the user level (not globally):
+
+```bash
+pip3.7 install --user pipenv
+```
+
+Make sure the path: $HOME/.local/bin is added to your ~/.bashrc file, pipenv needs this.
+
+[Back to top](#index)
+
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+> ## **_Installing Development Tools_** 
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+
+
+- Install aws cli:
+
+```bash
+pip3.7 install --user awscli
+```
+
+- Install git 2:
+
+```bash
+sudo yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
+sudo yum install git
+
+
+```
+
+- Install VSCode:
+
+```bash
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+sudo yum install code -y
+
+
+```
+
+- Install epel rlease repo:
+
+```bash
+sudo yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+```
+
+- install jq:
+
+```bash
+sudo yum install jq -y
+```
 
 <!-- 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
