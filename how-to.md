@@ -47,7 +47,7 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 
 - [Install important system packages](#Install-important-system-packages)
 
-- [Installing Python, Pip, Pipenv](#installing-python,-pip,-pipenv)
+- [Installing Python, Pip, Pipenv](#installing-python,-pip,-pipenv) 
 
 - [Installing Development Tools](#installing-development-tools)
 
