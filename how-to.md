@@ -865,6 +865,7 @@ python3.6 -m pip install --upgrade pip
 
 All python and Pip version except for Python 2 (location: /bin/python) will be located here: /usr/local/bin/
 
+```
 -rwxr-xr-x. 1 root root   232 May 31 19:08 pip
 -rwxr-xr-x. 1 root root   232 May 31 19:08 pip3
 -rwxr-xr-x. 1 root root   224 May 31 19:17 pip3.6
@@ -882,15 +883,18 @@ All python and Pip version except for Python 2 (location: /bin/python) will be l
 -rwxr-xr-x. 1 root root  3079 May 31 19:07 python3.8-config
 -rwxr-xr-x. 1 root root   441 May 31 19:17 pyvenv-3.6
 -rwxr-xr-x. 1 root root   441 May 31 19:00 pyvenv-3.7
+```
 
 The system python (python 2) are located here (/bin):
 
+```
 -rwxr-xr-x. 1 root root  219 May 31 18:55 /bin/pip
 -rwxr-xr-x. 1 root root  219 May 31 18:55 /bin/pip2
 -rwxr-xr-x. 1 root root  219 May 31 18:55 /bin/pip2.7
 lrwxrwxrwx. 1 root root    7 May 30 00:54 /bin/python -> python2
 lrwxrwxrwx. 1 root root    9 May 30 00:54 /bin/python2 -> python2.7
 -rwxr-xr-x. 1 root root 7144 Apr  2 09:17 /bin/python2.7
+```
 
 Even though pip3.7 does not appear in the system, we can still use it via virtual envs by using pipenv, like this:
 
