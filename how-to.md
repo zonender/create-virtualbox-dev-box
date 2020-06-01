@@ -697,7 +697,7 @@ yum update -y
 - Libraries needed during compilation to enable all features of Python:
 
 ```bash
-yum install -y wget zlib-devel bzip2-devel openssl openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel expat-devel libffi-dev gcc gcc-c++ zlib libffi-devel
+yum install -y wget zlib-devel bzip2-devel openssl openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel expat-devel libffi-dev gcc gcc-c++ make zlib libffi-devel
 ```
 
 - Make sure the developmet tools are installed:
@@ -838,36 +838,47 @@ lrwxrwxrwx. 1 root root    7 May 30 00:54 /bin/python -> python2
 lrwxrwxrwx. 1 root root    9 May 30 00:54 /bin/python2 -> python2.7
 -rwxr-xr-x. 1 root root 7144 Apr  2 09:17 /bin/python2.7
 
-If a specific version of pip is missing, for example, from the above list we can see pip3.7 is missing, so we can install it as follows:
+Even though pip3.7 does not appear in the system, we can still use it via virtual envs by using pipenv, like this:
 
-```bash
-sudo su -
-cd /root
-wget https://bootstrap.pypa.io/get-pip.py
-python3.6 get-pip.py
-python3.6 -m pip install --upgrade pip
+```
+mkdir ~/p3.7
+cd ~/p3.7
+pipenv --python 3.7
+pipenv shell
+(p3.7) [admin@devbox p3.7] $ pip -V
+pip 20.1.1 from /home/admin/.local/share/virtualenvs/p3.7-iWHhUSgC/lib/python3.7/site-packages/pip (python 3.7)
 ```
 
 Now you should have these versions of python working fine:
 
 ```bash
+[root@devbox ~]# /usr/bin/python -V
+Python 2.7.5
 [root@devbox ~]# /usr/local/bin/python3.6 -V
 Python 3.6.10
 [root@devbox ~]# /usr/local/bin/python3.7 -V
 Python 3.7.7
 [root@devbox ~]# /usr/local/bin/python3.8 -V
 Python 3.8.3
-[root@devbox ~]# /usr/bin/python -V
-Python 2.7.5
 ```
 
-To set the aliases:
+or:
 
-
+```
+[admin@devbox ~] $ python -V
+Python 2.7.5
+[admin@devbox ~] $ python3.6 -V
+Python 3.6.10
+[admin@devbox ~] $ python3.7 -V
+Python 3.7.7
+[admin@devbox ~] $ python3.8 -V
+Python 3.8.3
+```
 
 - Install pipenv on the user level (not globally):
 
 ```bash
+sudo su - admin
 pip3.7 install --user pipenv
 ```
 
@@ -887,14 +898,17 @@ Make sure the path: $HOME/.local/bin is added to your ~/.bashrc file, pipenv nee
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
  -->
 
-
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 - Install aws cli:
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 
 ```bash
 pip3.7 install --user awscli
 ```
 
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 - Install git 2:
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 
 ```bash
 sudo yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
@@ -903,7 +917,9 @@ sudo yum install git
 
 ```
 
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 - Install VSCode:
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 
 ```bash
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
@@ -913,16 +929,100 @@ sudo yum install code -y
 
 ```
 
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 - Install epel rlease repo:
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 
 ```bash
 sudo yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 ```
 
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 - install jq:
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 
 ```bash
 sudo yum install jq -y
+```
+
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+- Installing linux brew:
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+
+```bash
+sudo su - admin
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+```
+
+source: https://brew.sh/
+
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+- install tfenv, to install terraform
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+
+```bash
+sudo su - admin
+brew install tfenv
+```
+
+And make sure to add: $HOME/.tfenv/bin to your path
+
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+- Install node and nvm:
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+
+```bash
+sudo su - admin
+curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+sudo yum install nodejs -y
+```
+
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+to install nvm:
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+
+```bash
+sudo su - admin
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+```
+
+then add $HOME/.nvm to your PATH
+
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+- install chrome:
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+
+```bash
+sudo su -
+rpm --import https://dl.google.com/linux/linux_signing_key.pub
+
+sh -c 'echo -e "[google-chrome]\nname=google-chrome\nbaseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64\nenabled=1\ngpgcheck=1\ngpghttps://dl.google.com/linux/linux_signing_key.pub" > /etc/yum.repos.d/google-chrome.repo'
+
+yum install -y google-chrome-stable
+
+
+```
+
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+- Install sublime text 3
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+
+```bash
+sudo su -
+yum-config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+yum install -y sublime-text
+
+
+```
+
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+- Install docker
+<!-- #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+
+```bash
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce docker-ce-cli containerd.io
 ```
 
 <!-- 
