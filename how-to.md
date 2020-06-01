@@ -697,7 +697,7 @@ yum update -y
 - Libraries needed during compilation to enable all features of Python:
 
 ```bash
-yum install -y wget jq epel-release zlib-devel bzip2-devel openssl openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel expat-devel libffi-dev gcc gcc-c++ zlib libffi-devel
+yum install -y wget zlib-devel bzip2-devel openssl openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel expat-devel libffi-dev gcc gcc-c++ zlib libffi-devel
 ```
 
 - Make sure the developmet tools are installed:
@@ -749,7 +749,7 @@ cd /root
 wget http://python.org/ftp/python/3.7.7/Python-3.7.7.tar.xz
 tar xf Python-3.7.7.tar.xz
 cd Python-3.7.7
-./configure --prefix=/usr/local --enable-optimizations --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib"
+./configure --prefix=/usr/local --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib"
 make
 make altinstall
 
@@ -762,6 +762,108 @@ make altinstall
 sudo su -
 python3.7 -m pip install --upgrade pip
 ```
+
+- Install python 3.8
+
+```bash
+sudo su -
+cd /root
+wget http://python.org/ftp/python/3.8.3/Python-3.8.3.tar.xz
+tar xf Python-3.8.3.tar.xz
+cd Python-3.8.3
+./configure --prefix=/usr/local --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib"
+make
+make altinstall
+
+
+```
+
+- Then upgrade pip3.8
+
+```bash
+sudo su -
+python3.8 -m pip install --upgrade pip
+```
+
+- Install python 3.6.10
+
+```bash
+sudo su -
+cd /root
+wget http://python.org/ftp/python/3.6.10/Python-3.6.10.tar.xz
+tar xf Python-3.6.10.tar.xz
+cd Python-3.6.10
+./configure --prefix=/usr/local --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib"
+make
+make altinstall
+
+
+```
+
+- Then upgrade pip3.6.10
+
+```bash
+sudo su -
+python3.6 -m pip install --upgrade pip
+```
+
+- Python and Pip versions and their locations and setting aliases to use specific versions:
+
+All python and Pip version except for Python 2 (location: /bin/python) will be located here: /usr/local/bin/
+
+-rwxr-xr-x. 1 root root   232 May 31 19:08 pip
+-rwxr-xr-x. 1 root root   232 May 31 19:08 pip3
+-rwxr-xr-x. 1 root root   224 May 31 19:17 pip3.6
+-rwxr-xr-x. 1 root root   232 May 31 19:08 pip3.8
+-rwxr-xr-x. 1 root root    84 May 31 19:17 pydoc3.6
+-rwxr-xr-x. 1 root root    84 May 31 19:00 pydoc3.7
+-rwxr-xr-x. 1 root root    84 May 31 19:07 pydoc3.8
+-rwxr-xr-x. 2 root root 17624 May 31 19:16 python3.6
+-rwxr-xr-x. 2 root root 17624 May 31 19:16 python3.6m
+-rwxr-xr-x. 1 root root  3089 May 31 19:17 python3.6m-config
+-rwxr-xr-x. 2 root root 11200 May 31 18:59 python3.7
+-rwxr-xr-x. 2 root root 11200 May 31 18:59 python3.7m
+-rwxr-xr-x. 1 root root  2894 May 31 19:00 python3.7m-config
+-rwxr-xr-x. 1 root root 11480 May 31 19:05 python3.8
+-rwxr-xr-x. 1 root root  3079 May 31 19:07 python3.8-config
+-rwxr-xr-x. 1 root root   441 May 31 19:17 pyvenv-3.6
+-rwxr-xr-x. 1 root root   441 May 31 19:00 pyvenv-3.7
+
+The system python (python 2) are located here (/bin):
+
+-rwxr-xr-x. 1 root root  219 May 31 18:55 /bin/pip
+-rwxr-xr-x. 1 root root  219 May 31 18:55 /bin/pip2
+-rwxr-xr-x. 1 root root  219 May 31 18:55 /bin/pip2.7
+lrwxrwxrwx. 1 root root    7 May 30 00:54 /bin/python -> python2
+lrwxrwxrwx. 1 root root    9 May 30 00:54 /bin/python2 -> python2.7
+-rwxr-xr-x. 1 root root 7144 Apr  2 09:17 /bin/python2.7
+
+If a specific version of pip is missing, for example, from the above list we can see pip3.7 is missing, so we can install it as follows:
+
+```bash
+sudo su -
+cd /root
+wget https://bootstrap.pypa.io/get-pip.py
+python3.6 get-pip.py
+python3.6 -m pip install --upgrade pip
+```
+
+Now you should have these versions of python working fine:
+
+```bash
+[root@devbox ~]# /usr/local/bin/python3.6 -V
+Python 3.6.10
+[root@devbox ~]# /usr/local/bin/python3.7 -V
+Python 3.7.7
+[root@devbox ~]# /usr/local/bin/python3.8 -V
+Python 3.8.3
+[root@devbox ~]# /usr/bin/python -V
+Python 2.7.5
+```
+
+To set the aliases:
+
+
 
 - Install pipenv on the user level (not globally):
 
