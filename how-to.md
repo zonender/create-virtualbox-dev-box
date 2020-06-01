@@ -32,7 +32,7 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 
 - [Create the VM](#create-the-vm)
 
-  - [Option 1 - Download a preinstalled VirtualBox (VB) image (ova file)](#option-1---download-a-preinstalled-virtualbox-(vb)-image-(ova-file))
+  - [Option 1 - Download a preinstalled VirtualBox image](#option-1---download-a-preinstalled-virtualbox-image)
   - [Option 2 - Start from scratch](#option-2---start-from-scratch)
   
 - [VB VM SETTINGS](#vb-vm-settings)
@@ -65,7 +65,7 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
  -->
 
 <!-- ========================================================== -->
-> #### **_Option 1 - Download a preinstalled VirtualBox (VB) image (ova file)_**
+> #### **_Option 1 - Download a preinstalled VirtualBox image_**
 <!-- ========================================================== -->
 
 - Install the latest VB version from: https://www.virtualbox.org/ 
