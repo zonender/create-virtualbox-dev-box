@@ -34,6 +34,7 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 
   - [Option 1 - Download a preinstalled VirtualBox image](#option-1---download-a-preinstalled-virtualbox-image)
   - [Option 2 - Start from scratch](#option-2---start-from-scratch)
+  - [Option 3 - Use My Image](#option-3---use-my-image)
   
 - [VB VM SETTINGS](#vb-vm-settings)
 
@@ -272,6 +273,59 @@ You can maintain it periodically by downloading the ova file launching the VM tu
 - Go to the section: [BACKING UP THE VM USING VB OVA FILES](#backing-up-the-vm-using-vb-ova-files)
 
 [Back to top](#index)
+
+<!-- ========================================================== -->
+> #### **_Option 3 - Use My Image_**
+<!-- ========================================================== -->
+
+- Install the latest VirtualBox (VB) version from: https://www.virtualbox.org/ 
+
+- Download this image to your desktop, I personnally maintain this image: [here](https://1drv.ms/u/s!AgiBvdW-LWSGloN6fDqIaeV-OPkURA?e=2UUCA1)
+
+IMPORTANT: the temp credentials are (Please change them as soon as you access the machine)
+
+username: admin
+password: admin
+
+- open VB.
+
+- Go to: File and click on Import Appliance
+
+- Browse to the location of the ova file.
+
+- Change the name as desired.
+
+- Under Mac Address Policy select Create New...
+
+- Uncheck Import Hard Drive as VDI.
+
+- Click on Import.
+
+- Proceed to the section: [VB VM SETTINGS](#vb-vm-settings) to set the rest of the setting, before launching.
+
+- Launch the vm.
+
+- Then proceed to the section: [SETUP GUEST ADDITIONS AND SHARED HOST FOLDER](#setup-guest-additions-and-shared-host-folder)
+
+- Then proceed to the section: [SYSTEM CONFIGURATION](#system-configuration)
+
+- switch to root user:
+
+```bash
+sudo su -
+```
+
+- change the admin user password:
+
+```bash
+passwd admin
+```
+
+- reboot the VM and login with the new password.
+
+
+[Back to top](#index)
+
 
 <!-- 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
