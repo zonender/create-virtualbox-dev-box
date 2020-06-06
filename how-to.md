@@ -280,7 +280,7 @@ You can maintain it periodically by downloading the ova file launching the VM tu
 
 - Install the latest VirtualBox (VB) version from: https://www.virtualbox.org/ 
 
-- Download this image to your desktop, I personnally maintain this image: [here](https://1drv.ms/u/s!AgiBvdW-LWSGloN6fDqIaeV-OPkURA?e=2UUCA1)
+- Download this image to your desktop, I personnally maintain this image: [here](https://drive.google.com/file/d/1HsdabK04fX7M4jNFvi4dwTk7Du5s0qHK/view?usp=sharing)
 
 IMPORTANT: the temp credentials are (Please change them as soon as you access the machine)
 
