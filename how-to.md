@@ -76,6 +76,8 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 
 - Click on Create, the default values will suffice.
 
+- Please restart your system/pc/laptop
+
 - Done!
 
 
