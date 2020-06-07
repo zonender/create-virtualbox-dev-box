@@ -66,6 +66,9 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
  -->
  
+ 
+- Before preceeding with the installation, please enable virtualization on your pc/windows from your BIOS, then disable windows Hyper-V from the setting - apps - turn off windows feature.
+
 - Go to: https://www.virtualbox.org/wiki/Downloads and download the version appropriate to your OS.
 
 - Run the installation file and follow the wizrd, select the default values.
