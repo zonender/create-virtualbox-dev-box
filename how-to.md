@@ -30,6 +30,8 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
  -->
 
+- [Install the latest version of VirtualBox](#install-virtualbox)
+
 - [Create the VM](#create-the-vm)
 
   - [Option 1 - Download a preinstalled VirtualBox image](#option-1---download-a-preinstalled-virtualbox-image)
@@ -51,6 +53,30 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 - [Installing Python Pip Pipenv](#installing-python-pip-pipenv) 
 
 - [Installing Development Tools](#installing-development-tools)
+
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+> ## **_Install Virtualbox_** 
+<!-- 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+ -->
+ 
+- Go to: https://www.virtualbox.org/wiki/Downloads and download the version appropriate to your OS.
+
+- Run the installation file and follow the wizrd, select the default values.
+
+- Open VirtualBox.
+
+- Go to File => Host Network Manager.
+
+- Click on Create, the default values will suffice.
+
+- Done!
 
 
 <!-- 
