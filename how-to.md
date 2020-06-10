@@ -67,7 +67,9 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
  -->
  
  
-- Before preceeding with the installation, please enable virtualization on your pc/windows from your BIOS, then disable windows Hyper-V from the setting - apps - turn off windows feature.
+- Before preceeding with the installation, please enable virtualization on your pc/windows from your BIOS, please note this will vary from one pc to another, because accessing your PC's BIOS will depend on your pc brand, [this page should help you accessing your BIOS](https://www.tomshardware.com/reviews/bios-keys-to-access-your-firmware,5732.html), [this page might help.](https://2nwiki.2n.cz/pages/viewpage.action?pageId=75202968#:~:text=Press%20F2%20key%20at%20startup%20BIOS%20Setup.,changes%20and%20Reboot%20into%20Windows)
+
+- then disable windows Hyper-V by going to: settings - apps - on the top right corner click on "Program and Features" - on the top left corner click on "turn off windows feature" - locate "Hyper-V" in the list and uncheck it, also make sure all the sub menus are unchecked, restart windows 10, detailed instructions can be found [here.](https://support.microsoft.com/en-us/help/3204980/virtualization-applications-do-not-work-together-with-hyper-v-device-g)
 
 - Go to: https://www.virtualbox.org/wiki/Downloads and download the version appropriate to your OS.
 
