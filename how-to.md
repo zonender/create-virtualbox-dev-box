@@ -34,9 +34,9 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 
 - [Create the VM](#create-the-vm)
 
-  - [Option 1 - Download a preinstalled VirtualBox image](#option-1---download-a-preinstalled-virtualbox-image)
-  - [Option 2 - Start from scratch](#option-2---start-from-scratch)
-  - [Option 3 - Use My Image](#option-3---use-my-image)
+  - [Option 01- Download a preinstalled VirtualBox image](#option-1---download-a-preinstalled-virtualbox-image)
+  - [Option 02 - Start from scratch](#option-2---start-from-scratch)
+  - [Option 03 - Use My Image](#option-3---use-my-image)
   
 - [VB VM SETTINGS](#vb-vm-settings)
 
